@@ -1,0 +1,19 @@
+{
+  "name": "webpack",
+  "version": "0.1.0",
+  "description": "A simple brain storming app, built using webpack",
+  "main": "src/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qeberodev/webpack-or-legacy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "private": "true",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/qeberodev/webpack-or-legacy/issues"
+  },
+  "homepage": "https://github.com/qeberodev/webpack-or-legacy#readme"
+}
