@@ -1,7 +1,8 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin")
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const rootDir = path.resolve(__dirname, "..")
+const rootDir = path.resolve(__dirname, "..");
 const PORT = process.env.PORT || 8080;
 
 module.exports = {
@@ -10,16 +11,33 @@ module.exports = {
   output: {
     filename: "main.js",
     path: path.resolve(rootDir, "dist"),
+    clean: true,
+  },
+  resolve: {
+    alias: {
+      public: "/public",
+    }
   },
   devServer: {
     port: PORT,
     host: "0.0.0.0",
     watchFiles: ["src/**/*", "public/**/*"],
   },
+  module: {
+    rules: [
+      {
+        test: /\.(sass|scss|css)$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+      },
+    ],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(rootDir, "public", "index.html"),
       inject: "body",
+    }),
+    new MiniCssExtractPlugin({
+      filename: "style.css"
     }),
   ],
 };
