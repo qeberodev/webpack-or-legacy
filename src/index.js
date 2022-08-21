@@ -1,6 +1,22 @@
 const showdown = require("showdown");
 const converter = new showdown.Converter();
 
+import "public/style.scss";
+
+/** @param {String} value */
+const addNote = (value) => {
+  if (value.length <= 0) return;
+  
+  const ideaText = value;
+  const ideaHtml = converter.makeHtml(ideaText);
+  const brainstormedElem = document.getElementById("brainstormed");
+
+  const newIdeaElem = document.createElement("div");
+  newIdeaElem.className += 'idea-card';
+  newIdeaElem.innerHTML = ideaHtml;
+  brainstormedElem.prepend(newIdeaElem);
+};
+
 const onReadyListener = () => {
   /** @type {HTMLTextAreaElement} */
   const ideaElem = document.getElementById("idea");
@@ -9,6 +25,9 @@ const onReadyListener = () => {
   
   if (!ideaElem) return;
   if (!brainstormedElem) return;
+
+  const addNoteBtn = document.getElementById("add-note-btn");
+  addNoteBtn.addEventListener("click", () => addNote(ideaElem.value));
 
   ideaElem.addEventListener("keydown", (e) => {
     if (e.key !== "Shift") return;
@@ -26,15 +45,9 @@ const onReadyListener = () => {
     if (e.key !== "Enter") return;
     if (!shiftModPressed) return;
     
-    const ideaText = ideaElem.value;
-    const ideaHtml = converter.makeHtml(ideaText);
-
-    if (brainstormedElem.children.length > 0)
-      brainstormedElem.prepend(document.createElement("hr"));
-
-    const newIdeaElem = document.createElement("div");
-    newIdeaElem.innerHTML = ideaHtml;
-    brainstormedElem.prepend(newIdeaElem);
+    addNote(ideaElem.value);
+    ideaElem.value = "";
+    ideaElem.setAttribute("placeholder", "Tell me more!")
 
     e.preventDefault();
   })
