@@ -1,0 +1,25 @@
+{
+    "name": "mdlib",
+    "version": "0.8.0",
+    "description": "A library for custom showdown configuration.",
+    "main": "./dist/mdlib.js",
+    "scripts": {
+        "build": "webpack --config ./config/webpack.build.cjs",
+        "dev": "webpack --config ./config/webpack.dev.cjs",
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config=./config/jest.config.cjs"
+    },
+    "keywords": [
+        "markdown",
+        "library"
+    ],
+    "author": "Zablon Dawit, zablon@qebero.dev",
+    "license": "MIT",
+    "dependencies": {
+        "showdown": "^2.1.0"
+    },
+    "devDependencies": {
+        "jest": "^29.0.2",
+        "webpack": "^5.74.0",
+        "webpack-cli": "^4.10.0"
+    }
+}
