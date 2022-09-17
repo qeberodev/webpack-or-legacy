@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Webstorm</title>
+</head>
+
+<body>
+    <div id="container">
+        <section>
+            <h4>Tell me an idea <button id="help-btn">help?</button></h4>
+            <textarea name="idea" id="idea" autofocus placeholder="Start Writing Here"></textarea>
+
+            <div id="controls">
+                <button id="add-note-btn">Add Note</button>
+
+                <small>To add a note press here <code>SHIFT</code> + <code>ENTER</code>.</small>
+            </div>
+
+            <div id="error-msg">
+                Error Ocurred: 
+                <span id="error-msg__container"></span>
+            </div>
+        </section>
+
+        <section>
+            <h4>Brainstormed Ideas</h4>
+            <hr>
+            <div id="brainstormed"></div>
+        </section>
+
+        <section id="help-popup">
+                <h3>
+                    <span>Help</span>
+                    <button id="close-help-btn">close</button>
+                </h3>
+
+                <div>
+                    <h4>Metadata</h4>
+                    <p>Metadata is required for each note.
+                        Below is the format for required metadata properties</p>
+                    <code>
+                        --- <br>
+                        title: Title of the note <br>
+                        tags: Tags for note separated by comma. <br>
+                        id: Note id, unique <br>
+                        category: Note category, not useful now but used for sorting later <br>
+                        ---
+                    </code>
+
+                    <h4>Markdown Guide</h4>
+
+                    The markdown used for the notes is the standard note, you can
+                    look at the guide <a href="https://www.markdownguide.org/" rel="noreferrer" target="_blank">here</a>.
+
+                </div>
+        </section>
+    </div>
+</body>
+
+</html>
